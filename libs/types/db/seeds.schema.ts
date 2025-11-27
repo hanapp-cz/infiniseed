@@ -8,13 +8,15 @@ import {
 } from "drizzle-orm/pg-core";
 import { InferInsertModel, InferSelectModel } from "drizzle-orm";
 
-export const sourceEnum = pgEnum("source", [
+export const SOURCE = [
   "SAVED",
   "PURCHASED",
   "TRADED",
   "GIFTED",
   "OTHER",
-]);
+] as const;
+
+export const sourceEnum = pgEnum("source", SOURCE);
 
 export const seeds = pgTable("seeds", {
   id: integer().primaryKey().generatedByDefaultAsIdentity(),
